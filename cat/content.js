@@ -70,7 +70,6 @@ function startMovingImage() {
   }
 }
 
-
 // 이미지 멈추기
 function stopMovingImage() {
   if (animationFrameId) {
