@@ -42,7 +42,6 @@ function startMovingImage() {
       img.style.top = `${targetY}px`;
       cancelAnimationFrame(animationFrameId);
       animationFrameId = null;
-      resetRotation(); // 도달 후 회전 초기화
       return;
     }
 
@@ -57,16 +56,12 @@ function startMovingImage() {
     // 이미지가 이동하는 방향에 따라 좌우 반전 적용
     if (dx > 0 && flipped) {
       flipped = false;
-      img.style.transform = img.style.transform.replace(' scaleX(-1)', ''); // 오른쪽으로 이동하면 정상 상태
-   } else if (dx < 0 && !flipped) {
+      img.style.transform = ''; // 정상 상태로 설정
+    } else if (dx < 0 && !flipped) {
       flipped = true;
-      img.style.transform = img.style.transform + ' scaleX(-1)'; // 왼쪽으로 이동하면 좌우 반전
-   }
-   
+      img.style.transform = 'scaleX(-1)'; // 좌우 반전
+    }
 
-    // 회전은 이동 후 처리
-    const rotationAngle = Math.atan2(dy, dx) * (180 / Math.PI); // 각도 계산
-    img.style.transform = `rotate(${rotationAngle}deg)`; // 회전 적용
     animationFrameId = requestAnimationFrame(animate);
   }
 
@@ -74,6 +69,7 @@ function startMovingImage() {
     animationFrameId = requestAnimationFrame(animate);
   }
 }
+
 
 // 이미지 멈추기
 function stopMovingImage() {
@@ -85,11 +81,6 @@ function stopMovingImage() {
     img.remove();
     img = null;
   }
-}
-
-// 회전만 초기화하고 좌우 반전 상태 유지
-function resetRotation() {
-  img.style.transform = flipped ? 'scaleX(-1)' : ''; // 좌우 반전 상태 유지
 }
 
 // 마우스 클릭 이벤트 리스너
