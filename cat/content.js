@@ -20,7 +20,7 @@ function createImage(url, size) {
   img.style.position = 'fixed';
   img.style.top = '100px';
   img.style.left = '100px';
-  img.style.zIndex = '1000';
+  img.style.zIndex = '9999'; // 이미지가 다른 요소보다 위에 표시되도록 설정
   img.style.width = `${size}px`; // 크기 적용
   img.style.height = `${size}px`; // 크기 적용
   img.style.transition = 'transform 0.2s ease'; // 부드러운 회전 효과
@@ -33,10 +33,10 @@ function createImage(url, size) {
   imageShadow.style.left = '0';
   imageShadow.style.width = `${size}px`;
   imageShadow.style.height = `${size / 3}px`; // 그림자를 더 납작하게 만듦
-  imageShadow.style.background = 'rgba(0, 0, 0, 0.8)'; // 그림자 강도를 더 진하게
+  imageShadow.style.background = 'rgba(0, 0, 0, 1)'; // 그림자 강도를 더 진하게
   imageShadow.style.borderRadius = '50%'; // 그림자를 둥글게 처리
   imageShadow.style.filter = 'blur(12px)'; // 더 강한 블러 효과로 그림자 처리
-  imageShadow.style.zIndex = '-1';
+  imageShadow.style.zIndex = '9998'; // 그림자가 이미지 아래에 표시되도록 설정
   imageShadow.style.pointerEvents = 'none'; // 그림자가 클릭되지 않도록
   imageShadow.style.opacity = '0'; // 초기 상태에서 그림자는 보이지 않음
   document.body.appendChild(imageShadow);
