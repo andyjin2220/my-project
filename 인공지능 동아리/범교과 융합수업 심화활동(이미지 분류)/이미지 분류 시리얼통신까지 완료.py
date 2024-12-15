@@ -8,8 +8,8 @@ import serial
 import time
 
 
-py_serial = serial.Serial("COM3",9600)
-time.sleep(1)
+# py_serial = serial.Serial("COM3",9600)
+# time.sleep(1)
 
 # 모델 로드
 model = tf.keras.applications.MobileNetV2(weights='imagenet')
@@ -78,16 +78,16 @@ def main():
         print(result)
         print("분류된 객체:", result[0][0][1])
 
-    py_serial.write(result[0][0][1].encode("utf-8"))
-    time.sleep(1)  # 대기 시간 늘리기
+    # py_serial.write(result[0][0][1].encode("utf-8"))
+    # time.sleep(1)  # 대기 시간 늘리기
 
-    if py_serial.readable():
-            response = py_serial.readline().decode().strip()  # Read response from Arduino
-            print(f"Arduino says: {response}")
-    sum = py_serial.readline()
+    # if py_serial.readable():
+    #         response = py_serial.readline().decode().strip()  # Read response from Arduino
+    #         print(f"Arduino says: {response}")
+    # sum = py_serial.readline()
 
-    sum = sum.decode()
+    # sum = sum.decode()
 
-    print(sum)
+    # print(sum)
 
 main()
