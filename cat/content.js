@@ -53,7 +53,7 @@ function createImage(url, size) {
       offsetY = e.clientY - img.offsetTop;  // 마우스와 이미지의 Y 오프셋
       imageShadow.style.left = `${e.clientX - offsetX}px`;
       imageShadow.style.top = `${e.clientY - offsetY + size / 2}px`; // 그림자가 이미지 아래로 조금 내려가도록 설정
-      img.style.transform = 'translateY(-20px)'; // 이미지를 살짝 위로 띄우기
+      img.style.transform = 'translateY(-15px)'; // 이미지를 살짝 위로 띄우기
       imageShadow.style.opacity = '1'; // 드래그할 때 그림자가 보이도록
       e.preventDefault(); // 기본 동작 방지 (다른 창 뜨는 문제 해결)
       startRotatingImage(); // 드래그 시작 시 회전 애니메이션 시작
@@ -86,7 +86,7 @@ function startRotatingImage() {
   function animate() {
     if (!rotationActive) return; // 회전 효과가 활성화되지 않으면 종료
 
-    rotationAngle = Math.sin(Date.now() / 200) * 15; // 시간을 더 천천히 변하게 설정 (300으로 변경)
+    rotationAngle = Math.sin(Date.now() / 200) * 15; // 시간에 따라 회전 각도 조정 (좌우로 흔드는 효과)
     img.style.transform = `translateY(-15px) rotate(${rotationAngle}deg)`; // 회전 효과 적용
 
     animationFrameId = requestAnimationFrame(animate); // 애니메이션 반복
