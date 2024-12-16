@@ -3,50 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moving Image Control</title>
+  <title>Extension Popup</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 20px;
-      width: 300px; /* 팝업 창 크기 */
-      height: 250px;
+      font-family: Arial, sans-serif;
+      width: 400px;
+      height: 600px;
+      overflow: hidden;
     }
-    #toggleButton {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    #imageUrl {
-      width: 100%;
+
+    #header {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #f4f4f4;
       padding: 10px;
-      font-size: 16px;
-      margin-bottom: 10px;
+      border-bottom: 1px solid #ddd;
     }
-    #sliderContainer {
-      margin-top: 20px;
+
+    button {
+      flex: 1;
+      padding: 10px;
+      margin: 0 5px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
     }
-    .slider {
+
+    button:hover {
+      background-color: #007bff;
+      color: white;
+    }
+
+    button.active {
+      background-color: #007bff;
+      color: white;
+    }
+
+    #content {
+      padding: 20px;
+    }
+
+    .control-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="range"] {
       width: 100%;
     }
-    .slider-label {
-      margin: 10px 0 5px;
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
     }
   </style>
 </head>
 <body>
-  <input id="imageUrl" type="text" placeholder="Enter image URL" />
-  <button id="toggleButton">Activate</button>
-  
-  <!-- 이미지 크기와 속도 조정 슬라이더 -->
-  <div id="sliderContainer">
-    <div class="slider-label">Image Size</div>
-    <input type="range" id="imageSizeSlider" class="slider" min="50" max="300" value="150" />
-    <div class="slider-label">Speed</div>
-    <input type="range" id="speedSlider" class="slider" min="1" max="10" value="5" />
+  <div id="header">
+    <button id="btn-image">이미지</button>
+    <button id="btn-text">텍스트</button>
+    <button id="btn-checklist">체크리스트</button>
+    <button id="btn-alarm">알람</button>
   </div>
-
+  <div id="content">
+    <p>기능을 선택하세요.</p>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
